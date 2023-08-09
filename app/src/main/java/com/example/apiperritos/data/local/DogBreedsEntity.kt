@@ -5,4 +5,7 @@ import androidx.room.PrimaryKey
 import com.example.apiperritos.data.remoto.DogBreeds
 
 @Entity("tabla_raza")
-data class DogBreedsEntity(@PrimaryKey(autoGenerate = true) val id:Long,val breeds :String)
+data class DogBreedsEntity(val breeds :String)
+{
+    @PrimaryKey(autoGenerate = true) var id:Long=0
+}

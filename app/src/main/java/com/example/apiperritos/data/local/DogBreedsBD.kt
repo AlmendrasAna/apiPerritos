@@ -7,6 +7,10 @@ import androidx.room.RoomDatabase
 
 @Database(entities = [DogBreedsEntity::class], version = 1)
 abstract class DogBreedsBD() : RoomDatabase() {
+
+    abstract fun getDaoDogBreeds (): DogBreedsDao
+
+
     companion object {
         @Volatile
         private var INSTANCE: DogBreedsBD? = null
@@ -20,7 +24,7 @@ abstract class DogBreedsBD() : RoomDatabase() {
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
                     DogBreedsBD::class.java,
-                    "razas_database"
+                    "breed_database"
                 ).build()
 
                 INSTANCE = instance
