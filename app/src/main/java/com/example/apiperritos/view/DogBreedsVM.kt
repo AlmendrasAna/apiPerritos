@@ -10,7 +10,7 @@ import kotlinx.coroutines.launch
 
 class DogBreedsVM  (application: Application): AndroidViewModel(application) {
     private val repositorio: Repository
-
+fun getLiveDataAllBreeds() = repositorio.getListGetBreeds()
     init {
         val api = DogBreedsRetrofitC.getRetrofitDogBreeds()
         val razaDatabase = DogBreedsBD.getDatabase(application).getDaoDogBreeds()

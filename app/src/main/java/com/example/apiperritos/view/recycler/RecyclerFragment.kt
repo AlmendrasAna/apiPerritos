@@ -21,16 +21,16 @@ private const val ARG_PARAM2 = "param2"
  * create an instance of this fragment.
  */
 class RecyclerFragment : Fragment() {
-    lateinit var binding :FragmentRecyclerBinding
-    private val dogBreedsVM : DogBreedsVM by activityViewModels()
-
+    lateinit var binding: FragmentRecyclerBinding
+    private val dogBreedsVM: DogBreedsVM by activityViewModels()
 
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-     binding = FragmentRecyclerBinding.inflate(inflater,container,false)
+        binding = FragmentRecyclerBinding.inflate(inflater, container, false)
+
         initAdapter()
         return binding.root
     }
@@ -39,7 +39,10 @@ class RecyclerFragment : Fragment() {
         val adapter = Adapter()
         binding.recyclerView.adapter = adapter
         dogBreedsVM.getAllRazas()
+        dogBreedsVM.getLiveDataAllBreeds().observe(viewLifecycleOwner) {
+            adapter.setData(it)
+        }
     }
-
-
 }
+
+

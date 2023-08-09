@@ -5,7 +5,4 @@ import androidx.room.PrimaryKey
 import com.example.apiperritos.data.remoto.DogBreeds
 
 @Entity("tabla_raza")
-data class DogBreedsEntity(val breeds :String)
-{
-    @PrimaryKey(autoGenerate = true) var id:Long=0
-}
+data class DogBreedsEntity( @PrimaryKey val breeds :String)
