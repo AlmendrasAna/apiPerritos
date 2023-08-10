@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <color name="drab">#705C28</color>
+    <color name="davys_grey">#4F4D4E</color>
+    <color name="bon_jour">#FFE8E3E5</color>
+    <color name="suva_gray">#FF898687</color>
+    <color name="grullo">#FFA4947C</color>
+
+
 </resources>

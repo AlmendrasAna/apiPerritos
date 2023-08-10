@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
-import com.example.apiperritos.R
 import com.example.apiperritos.databinding.FragmentRecyclerBinding
 import com.example.apiperritos.view.DogBreedsVM
 
@@ -36,11 +35,11 @@ class RecyclerFragment : Fragment() {
     }
 
     private fun initAdapter() {
-        val adapter = Adapter()
-        binding.recyclerView.adapter = adapter
+        val adapterBreeds = AdapterBreeds()
+        binding.recyclerView.adapter = adapterBreeds
         dogBreedsVM.getAllRazas()
         dogBreedsVM.getLiveDataAllBreeds().observe(viewLifecycleOwner) {
-            adapter.setData(it)
+            adapterBreeds.setData(it)
         }
     }
 }

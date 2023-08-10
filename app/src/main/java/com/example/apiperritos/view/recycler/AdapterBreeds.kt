@@ -1,12 +1,15 @@
 package com.example.apiperritos.view.recycler
 
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
+import com.example.apiperritos.R
 import com.example.apiperritos.data.local.DogBreedsEntity
 import com.example.apiperritos.databinding.ItemBinding
 
-class Adapter : RecyclerView.Adapter<Adapter.ViewHolder>() {
+class AdapterBreeds : RecyclerView.Adapter<AdapterBreeds.ViewHolder>() {
 
 
     private var dogBreedsEntitys: List<DogBreedsEntity> = emptyList()
@@ -39,8 +42,13 @@ class Adapter : RecyclerView.Adapter<Adapter.ViewHolder>() {
     class ViewHolder(private val binding: ItemBinding) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(dogBreedsEntity: DogBreedsEntity) {
+val bundle = Bundle()
 
             binding.razaTxt.text = dogBreedsEntity.breeds
+            binding.cardItem.setOnClickListener{
+                bundle.putString("breeds",binding.razaTxt.text.toString())
+                Navigation.findNavController(binding.root).navigate(R.id.action_recyclerFragment_to_infoFragment,bundle)
+            }
 
         }
 

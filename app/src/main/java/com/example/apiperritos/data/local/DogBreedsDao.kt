@@ -10,8 +10,10 @@ import androidx.room.Query
 interface DogBreedsDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertBreeds(dogBreedsEntity: DogBreedsEntity)
-
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertImaBreeds(dogBreedsImagesEntity: DogBreedsImagesEntity)
     @Query("Select * From tabla_raza order by breeds ASC ")
     fun getAllBreeds(): LiveData<List<DogBreedsEntity>>
-
+    @Query("Select * From tabla_ima_raza where breeds = :id")
+    fun getAllImaBreeds(id : String): LiveData<List<DogBreedsImagesEntity>>
 }
