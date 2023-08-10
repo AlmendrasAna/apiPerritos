@@ -31,6 +31,7 @@ class Repository(private val dogBreedsApi: DogBreedsApi, private val dogBreedsDa
 
     suspend fun getImaBreeds(id : String) {
         val response = dogBreedsApi.getDataIma(id)
+        Log.e("repo",id)
         if (response.isSuccessful) {
             response.body()!!.message.forEach{
                 val dogBreedsImagesEntity = DogBreedsImagesEntity(id,it)

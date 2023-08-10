@@ -1,6 +1,7 @@
 package com.example.apiperritos.view.recycler
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.navigation.Navigation
@@ -42,11 +43,13 @@ class AdapterBreeds : RecyclerView.Adapter<AdapterBreeds.ViewHolder>() {
     class ViewHolder(private val binding: ItemBinding) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(dogBreedsEntity: DogBreedsEntity) {
-val bundle = Bundle()
 
-            binding.razaTxt.text = dogBreedsEntity.breeds
+
+            binding.razaTxt.text = dogBreedsEntity.breeds.uppercase()
             binding.cardItem.setOnClickListener{
-                bundle.putString("breeds",binding.razaTxt.text.toString())
+                val bundle = Bundle()
+                bundle.putString("breeds",binding.razaTxt.text.toString().lowercase())
+                Log.e("lol",bundle.toString())
                 Navigation.findNavController(binding.root).navigate(R.id.action_recyclerFragment_to_infoFragment,bundle)
             }
 

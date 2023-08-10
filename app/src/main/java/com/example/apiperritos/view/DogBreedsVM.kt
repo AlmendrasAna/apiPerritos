@@ -27,6 +27,7 @@ class DogBreedsVM(application: Application) : AndroidViewModel(application) {
 
     fun getImaBreeds(id : String) = viewModelScope.launch {
         repositorio.getImaBreeds(id)
+
     }
 
 }

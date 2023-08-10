@@ -8,9 +8,9 @@ interface DogBreedsApi {
 
     @GET("breeds/list/all")
     suspend fun getData(): Response<DogBreeds>
+//se le pasa un id q es variable para q muestre solo algunas razas de perro
 
-    @GET("breeds/{id}/imagenes")
-    //se le pasa un id q es variable para q muestre solo algunas razas de perro
+    @GET("breed/{id}/images")
 
     suspend fun getDataIma(@Path("id") id: String): Response<DogBreedsImages>
 

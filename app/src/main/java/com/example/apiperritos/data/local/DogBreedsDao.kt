@@ -14,6 +14,6 @@ interface DogBreedsDao {
     suspend fun insertImaBreeds(dogBreedsImagesEntity: DogBreedsImagesEntity)
     @Query("Select * From tabla_raza order by breeds ASC ")
     fun getAllBreeds(): LiveData<List<DogBreedsEntity>>
-    @Query("Select * From tabla_ima_raza where breeds = :id")
+    @Query("Select * From tabla_ima_raza where breeds like :id")
     fun getAllImaBreeds(id : String): LiveData<List<DogBreedsImagesEntity>>
 }
