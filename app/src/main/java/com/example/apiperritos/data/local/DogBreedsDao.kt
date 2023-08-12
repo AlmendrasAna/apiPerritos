@@ -9,7 +9,9 @@ import androidx.room.Query
 @Dao
 interface DogBreedsDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertBreeds(dogBreedsEntity: DogBreedsEntity)
+    suspend fun insertBreeds(dogBreedsEntity: List<DogBreedsEntity>)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertOneBreeds(dogBreedEntity: DogBreedsEntity)
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertImaBreeds(dogBreedsImagesEntity: DogBreedsImagesEntity)
     @Query("Select * From tabla_raza order by breeds ASC ")

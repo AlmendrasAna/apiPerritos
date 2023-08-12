@@ -6,6 +6,8 @@ import com.example.apiperritos.data.local.DogBreedsDao
 import com.example.apiperritos.data.local.DogBreedsEntity
 import com.example.apiperritos.data.local.DogBreedsImagesEntity
 import com.example.apiperritos.data.remoto.DogBreedsApi
+import com.example.apiperritos.data.remoto.toBreedEntity
+import com.example.apiperritos.data.remoto.toEntity
 
 class Repository(private val dogBreedsApi: DogBreedsApi, private val dogBreedsDao: DogBreedsDao) {
 
@@ -17,9 +19,9 @@ class Repository(private val dogBreedsApi: DogBreedsApi, private val dogBreedsDa
         if (response.isSuccessful) {
             val message = response.body()!!.message
             val keys = message.keys
-            keys.forEach {
-                val dogBreedsEntity = DogBreedsEntity(it)
-                dogBreedsDao.insertBreeds(dogBreedsEntity)
+            keys.forEach {breed->
+                val dogBreedsEntity = breed.toBreedEntity()
+                dogBreedsDao.insertOneBreeds(dogBreedsEntity)
 
             }
 
@@ -33,8 +35,8 @@ class Repository(private val dogBreedsApi: DogBreedsApi, private val dogBreedsDa
         val response = dogBreedsApi.getDataIma(id)
         Log.e("repo",id)
         if (response.isSuccessful) {
-            response.body()!!.message.forEach{
-                val dogBreedsImagesEntity = DogBreedsImagesEntity(id,it)
+            response.body()!!.message.forEach{url->
+                val dogBreedsImagesEntity = url.toEntity(id)
                 dogBreedsDao.insertImaBreeds(dogBreedsImagesEntity)
 
             }
